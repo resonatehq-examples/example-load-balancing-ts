@@ -1,0 +1,16 @@
+{
+  "name": "example-load-balancing-ts",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@resonatehq/sdk": "^0.0.0-SNAPSHOT-4e25acd87a9cf7e0e2225d3010c8cbfb64994cc0",
+    "uuid": "^11.1.0"
+  }
+}
