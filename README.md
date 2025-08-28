@@ -1,8 +1,12 @@
-# Worker load balancing | Resonate TypeScript SDK example application
+![Resonate example app readme banner](/assets/resonate-example-app-readme-banner.png)
 
-![load balancing terminal visualization gif](./load-balancing-ts.gif)
+# Worker load balancing
+
+**Resonate TypeScript SDK**
 
 This example showcases Resonate's automatic service discovery and load balancing capabilities.
+
+![load balancing terminal visualization gif](/assets/load-balancing-ts.gif)
 
 ## The problem
 
