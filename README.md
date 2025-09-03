@@ -2,9 +2,13 @@
 
 # Worker load balancing
 
+![echo load balancing banner](/assets/echo-load-balancing-banner.png)
+
 **Resonate TypeScript SDK**
 
 This example showcases Resonate's automatic service discovery and load balancing capabilities.
+
+Instructions on [How to run this example](#how-to-run-this-example) are below.
 
 ![load balancing terminal visualization gif](/assets/load-balancing-ts.gif)
 
@@ -91,6 +95,8 @@ brew install resonatehq/tap/resonate
 # start the server
 resonate serve
 ```
+
+If you don't have brew, you can try [one of these other methods of installation](https://docs.resonatehq.io/operate/server-installation).
 
 Run multiple worker instances.
 We recommend running at least 3 instances to get the best demonstration.

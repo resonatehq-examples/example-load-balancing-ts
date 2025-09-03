@@ -1,4 +1,5 @@
-import { Resonate, Context } from "@resonatehq/sdk";
+import { Resonate } from "@resonatehq/sdk";
+import type { Context } from "@resonatehq/sdk";
 
 const resonate = Resonate.remote({
   group: "workers",

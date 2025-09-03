@@ -10,7 +10,7 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@resonatehq/sdk": "^0.0.0-SNAPSHOT-4e25acd87a9cf7e0e2225d3010c8cbfb64994cc0",
+    "@resonatehq/sdk": "^0.7.1",
     "uuid": "^11.1.0"
   }
 }
