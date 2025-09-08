@@ -1,8 +1,6 @@
-![Resonate example app readme banner](/assets/resonate-example-app-readme-banner.png)
+![echo load balancing banner](/assets/echo-load-balancing-banner.png)
 
 # Worker load balancing
-
-![echo load balancing banner](/assets/echo-load-balancing-banner.png)
 
 **Resonate TypeScript SDK**
 
