@@ -91,7 +91,7 @@ Run the Resonate Server:
 # install the server if you haven't yet
 brew install resonatehq/tap/resonate
 # start the server
-resonate serve
+resonate dev
 ```
 
 If you don't have brew, you can try [one of these other methods of installation](https://docs.resonatehq.io/operate/server-installation).
