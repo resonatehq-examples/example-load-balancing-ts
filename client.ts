@@ -9,7 +9,7 @@ async function main() {
   try {
     const id = uuid();
     const computeCost = randint(1, 10);
-    resonate.rpc(
+    await resonate.beginRpc(
       id,
       "computeSomething",
       { id: id, computeCost: computeCost },
