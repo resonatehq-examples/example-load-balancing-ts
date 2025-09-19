@@ -96,6 +96,12 @@ resonate dev
 
 If you don't have brew, you can try [one of these other methods of installation](https://docs.resonatehq.io/operate/server-installation).
 
+Install dependencies:
+
+```shell
+bun install
+```
+
 Run multiple worker instances.
 We recommend running at least 3 instances to get the best demonstration.
 
