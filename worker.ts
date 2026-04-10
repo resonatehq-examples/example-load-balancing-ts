@@ -1,7 +1,8 @@
 import { Resonate } from "@resonatehq/sdk";
 import type { Context } from "@resonatehq/sdk";
 
-const resonate = Resonate.remote({
+const resonate = new Resonate({
+  url: "http://localhost:8001",
   group: "workers",
 });
 
