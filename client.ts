@@ -1,7 +1,8 @@
 import { Resonate } from "@resonatehq/sdk";
 import { v4 as uuid } from "uuid";
 
-const resonate = Resonate.remote({
+const resonate = new Resonate({
+  url: "http://localhost:8001",
   group: "client",
 });
 
