@@ -1,10 +1,12 @@
 import { Resonate } from "@resonatehq/sdk";
 import type { Context } from "@resonatehq/sdk";
 
+// #region worker
 const resonate = new Resonate({
   url: "http://localhost:8001",
   group: "workers",
 });
+// #endregion
 
 function computeSomething(context: Context, args: any): void {
   const id = args.id;

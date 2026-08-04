@@ -46,23 +46,28 @@ And often they are forced to mix messy service discovery, load balancing, and re
 
 Resonate has built-in service discovery, load balancing, and recovery. And it provides the developer with a simple RPC API and target schema to make use of these features.
 
-In your worker / microservice you can just specify the group that it belongs to:
+In your worker / microservice you can just specify the group that it belongs to (`worker.ts`):
+
+<!-- sotto self:worker.ts#worker -->
 
 ```typescript
-const resonate = Resonate.remote({
+const resonate = new Resonate({
+  url: "http://localhost:8001",
   group: "workers",
 });
 ```
 
 Run as many instances of that worker / microservice as you need.
 
-Then, when you need to call a function on that worker / microservice you use Resonate's RPC API, targeting any worker in that group.
+Then, when you need to call a function on that worker / microservice you use Resonate's RPC API, targeting any worker in that group (`client.ts`):
+
+<!-- sotto self:client.ts#client -->
 
 ```typescript
-resonate.rpc(
+await resonate.beginRpc(
   id,
-  "function_name",
-  args,
+  "computeSomething",
+  { id: id, computeCost: computeCost },
   resonate.options({
     target: "poll://any@workers",
   })
