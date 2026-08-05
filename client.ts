@@ -10,6 +10,7 @@ async function main() {
   try {
     const id = uuid();
     const computeCost = randint(1, 10);
+    // #region client
     await resonate.beginRpc(
       id,
       "computeSomething",
@@ -18,6 +19,7 @@ async function main() {
         target: "poll://any@workers",
       })
     );
+    // #endregion
     resonate.stop();
   } catch (e) {
     console.log(e);

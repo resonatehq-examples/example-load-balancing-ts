@@ -20,7 +20,7 @@ This example showcases Resonate's automatic service discovery and load balancing
 
 Instructions on [How to run this example](#how-to-run-this-example) are below.
 
-![load balancing terminal visualization gif](/assets/load-balancing-ts.gif)
+![load balancing terminal visualization gif](./assets/load-balancing-ts.gif)
 
 ## The problem
 
@@ -46,23 +46,28 @@ And often they are forced to mix messy service discovery, load balancing, and re
 
 Resonate has built-in service discovery, load balancing, and recovery. And it provides the developer with a simple RPC API and target schema to make use of these features.
 
-In your worker / microservice you can just specify the group that it belongs to:
+In your worker / microservice you can just specify the group that it belongs to (`worker.ts`):
+
+<!-- sotto self:worker.ts#worker -->
 
 ```typescript
-const resonate = Resonate.remote({
+const resonate = new Resonate({
+  url: "http://localhost:8001",
   group: "workers",
 });
 ```
 
 Run as many instances of that worker / microservice as you need.
 
-Then, when you need to call a function on that worker / microservice you use Resonate's RPC API, targeting any worker in that group.
+Then, when you need to call a function on that worker / microservice you use Resonate's RPC API, targeting any worker in that group (`client.ts`):
+
+<!-- sotto self:client.ts#client -->
 
 ```typescript
-resonate.rpc(
+await resonate.beginRpc(
   id,
-  "function_name",
-  args,
+  "computeSomething",
+  { id: id, computeCost: computeCost },
   resonate.options({
     target: "poll://any@workers",
   })
@@ -75,22 +80,14 @@ You get automatic service discovery, load balancing, and recovery for all the wo
 
 ## About this example
 
-This example demonstrates Resonate's built-in load balancing and recovery capabilities.
+You run several instances of `worker.ts`, which exposes a single function `computeSomething()`. Then you use `client.ts` to start many executions of it.
 
-As the operator, you will run multiple instances of a worker (`worker.ts`).
-The worker contains a single function `computeSomething()`.
+What to watch for:
 
-You will then use the invoke script (`client.ts`) to start many `computeSomething()` executions.
+- As you invoke more executions, they spread across the running worker instances.
+- Kill a worker mid-execution and its in-flight work recovers on another one.
 
-As you invoke more and more executions, you will see them start to spread across the multiple worker instances.
-
-If you kill one of the workers while it is in the middle of handling executions, you will see the executions recover on another worker.
-
-If you look at the code on the worker, you will notice that it identifies itself as a member of the `workers` group.
-
-And if you look at the code on the invoke script, you will notice that the invocation of `computeSomething()` targets any worker in the `workers` group.
-
-This example shows that with minimal developer and operator effort, you get load balancing and recovery out of the box with Resonate.
+No routing logic in the application — the group name in the worker and the `poll://any@workers` target in the client are the whole configuration.
 
 ## How to run this example
 
